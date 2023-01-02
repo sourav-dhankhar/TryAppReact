@@ -1,0 +1,12 @@
+
+video {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 5px;
+}
+
+.vcx_player {
+    height: 100%;
+    width: 100%;
+}

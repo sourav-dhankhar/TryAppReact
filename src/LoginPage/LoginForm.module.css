@@ -1,0 +1,32 @@
+.left-section form {
+    min-width: 250px;
+    padding-bottom: 2em;
+}
+
+
+.left-section form div input,
+.left-section form div button {
+    border-radius: 5px;
+}
+
+
+.left-section form div button {
+    background-color: none;
+}
+.left-section form div button:hover {
+    background-color: rgb(184, 181, 181);
+}
+
+.left-section form input {
+    padding: 0 1em;
+}
+
+.mediaIcons {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.mediaIcons a svg {
+    font-size: 2em;
+}

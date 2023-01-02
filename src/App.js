@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Login from "./LoginPage/Login";
+import Modal from "../src/UI/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { getDeviceActions } from "./store/getDeviceSlice";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const dispatch = useDispatch();
+
+    const showDevices = useSelector((state) => state.getDevices.showDevices);
+    const devicesList = useSelector((state) => state.getDevices.devicesList)
+    const isLoggedIn = useSelector((state) => state.loggedInSlice.isLoggedIn);
+
+    const hideSettingsHandler = () => {
+        dispatch(getDeviceActions.hideDeviceModal());
+    }
+
+    return (
+        <React.Fragment>
+            {showDevices && <Modal title="Devices" message={devicesList} closeModal={hideSettingsHandler}/>}
+            {!isLoggedIn && <Login/>}
+            {/* <Session/> */}
+        </React.Fragment>
+    )
 }
 
 export default App;

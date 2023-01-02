@@ -1,0 +1,52 @@
+.login-wrapper {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 2fr;
+    padding: 10px;
+}
+
+.stream-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-wrapper .cameraOffImages {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.login-wrapper .cameraOffImages img {
+    height: auto;
+    width: 100%;
+}
+
+
+
+
+@media only screen and (max-width: 800px) {
+    .login-wrapper {
+        display: grid;
+        height: 100%;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        padding: 10px;
+        justify-items: center;
+    }
+
+    .login-wrapper>div:first-child {
+        grid-row: 2;
+    }
+
+    .stream-wrapper {
+        width: 530px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .stream-wrapper {
+        width: 100%;
+    }
+}
