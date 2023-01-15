@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import "./GenerateStream.css";
 import { localStreamActions } from "../store/localStreamSlice";
-import localStream from "./localStream/localStream";
+import localStream from "../localStream/localStream";
 
 
 const GenerateStream = (props) => {
@@ -38,7 +38,6 @@ const GenerateStream = (props) => {
             } else {
                 props.onMediaAccess(true);
             }
-            // dispatch(localStreamActions.setLocalStream(myStream));
         })
         myStream.addEventListener('media-access-denied', (event) => {
             props.onMediaAccess(false);

@@ -5,7 +5,7 @@ export const fetchDeviceList = () => {
         const getDataFromEnxRtc = () => {
             return new Promise((resolve, reject) => {
                 window.EnxRtc.getDevices((res) => {
-                    if (res.result == 0) {
+                    if (res.result === 0) {
                         resolve(res.devices);
                     } else {
                         reject(null);

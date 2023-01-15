@@ -24,7 +24,7 @@
 .mediaIcons {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .mediaIcons a svg {

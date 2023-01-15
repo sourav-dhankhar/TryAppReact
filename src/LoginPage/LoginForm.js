@@ -4,7 +4,7 @@ import MediaIcons from './MediaIcons';
 import axios from 'axios';
 import { loggedInActions } from '../store/loggedInSlice';
 import { useDispatch } from 'react-redux';
-import localStream from './localStream/localStream';
+import localStream from '../localStream/localStream';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -35,8 +35,11 @@ const LoginForm = () => {
             const tokenData = await axios(config);
             console.log('tokenData ', tokenData);
             localStream.myStream.close();
+            console.log('localStream ', localStream.myStream);
             localStream.setMyStream(null);
-            dispatch(loggedInActions.setLogIn(true));
+            // setTimeout(() => {
+                dispatch(loggedInActions.setLogIn({loggedIn : true, token: tokenData.data}));
+            // }, 10000);
         } catch (error) {
             console.log('error ', error);
         }

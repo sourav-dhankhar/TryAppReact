@@ -1,0 +1,14 @@
+.toolbar {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toolbar li {
+    list-style: none;
+}
+
+.toolbar li a {
+    font-size: 30px;
+}

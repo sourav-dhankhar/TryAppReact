@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { localStreamActions } from "../../store/localStreamSlice";
-import localStream from "../localStream/localStream";
+import localStream from "../../localStream/localStream";
 
 
 const MediaIconsListing = (props) => {
@@ -15,12 +15,12 @@ const MediaIconsListing = (props) => {
         let videoSelectedId = stream.config.video.deviceId;
         let micSelectedId = stream.config.audio.deviceId;
         camSelectHref.current.childNodes.forEach(element => {
-            if (element.id == videoSelectedId) {
+            if (element.id === videoSelectedId) {
                 element.selected = true;
             }
         });
         micSelectHref.current.childNodes.forEach(element => {
-            if (element.id == micSelectedId) {
+            if (element.id === micSelectedId) {
                 element.selected = true;
             }
         });

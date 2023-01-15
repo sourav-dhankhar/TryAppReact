@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const localStreamSlice = createSlice({
     name: 'localStream',
-    initialState: {localStream : null},
+    initialState: {localStreamVideoMuted : false, localStreamAudioMuted: false},
     reducers: {
-        setLocalStream: (state, action) => {
-            state.localStream = action.payload;
+        setAudioMutedLocalStream: (state,action) => {
+            state.localStreamAudioMuted = action.payload;
+        },
+        setVideoMutedLocalStream: (state, action) => {
+            state.localStreamVideoMuted = action.payload;
         },
         changeCamera: (state,action) => {
             state.localStream.switchCamera(state.localStream, action.payload, (res) => {
