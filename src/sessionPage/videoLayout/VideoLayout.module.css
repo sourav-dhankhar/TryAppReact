@@ -1,3 +1,20 @@
 .self-view {
     position: absolute !important;
 }
+
+.avatar {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+div[id^="con_"] {
+    position: relative;
+}
+
+.video-stream-containers {
+    justify-items: center;
+    align-items: center;
+}

@@ -10,6 +10,19 @@ const layoutShema = {
     },
     '3' : {
         'col-template-columns' : '1fr 1fr 1fr',
+    },
+    '0M' : {
+        'col-template-columns' : '1fr',
+    },
+    '1M' : {
+        'col-template-columns' : '1fr',
+    },
+    '2M' : {
+        'col-template-columns' : '1fr',
+        'col-template-rows': '1fr 1fr',
+    },
+    '3M' : {
+        'col-template-columns' : '1fr 1fr 1fr',
     }
 }
 

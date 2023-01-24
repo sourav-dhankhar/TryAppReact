@@ -9,6 +9,21 @@ import Toolbar from "./toolbar/Toolbar";
 const Room = (props) => {
     const videoMuted = useSelector((state) => state.localStream.localStreamVideoMuted);
     const audioMuted = useSelector((state) => state.localStream.localStreamAudioMuted);
+
+    useEffect(() => {
+        if (room.myRoom && room.myRoom.activeTalkerList.size == 0) {
+            dispatch(roomActions.setUserList([{
+                'name': room.myRoom.me.name,
+                'audio': localStream.myStream.isAudioMuted(),
+                'video': localStream.myStream.isVideoMuted(),
+                'mediatype' : localStream.myStream.isAudioMuted() ? localStream.myStream.isVideoMuted() ? 'none' : 'audio' : localStream.myStream.isVideoMuted() ? 'none' : 'audioVideo',
+                'streamId': localStream.myStream.getID(),
+                'clientId': room.myRoom.me.clientId,
+                'local': true
+            }]))
+        }
+    }, [videoMuted, audioMuted])
+
     useEffect(() => {
         joinRoom(props.token);
     }, [])
@@ -77,7 +92,8 @@ const Room = (props) => {
                         dispatch(roomActions.setUserList([{
                             'name': room.myRoom.me.name,
                             'audio': localStream.myStream.isAudioMuted(),
-                            'video': localStream.myStream.isAudioMuted(),
+                            'video': localStream.myStream.isVideoMuted(),
+                            'mediatype' : localStream.myStream.isAudioMuted() ? localStream.myStream.isVideoMuted() ? 'none' : 'audio' : localStream.myStream.isVideoMuted() ? 'none' : 'audioVideo',
                             'streamId': localStream.myStream.getID(),
                             'clientId': room.myRoom.me.clientId,
                             'local': true

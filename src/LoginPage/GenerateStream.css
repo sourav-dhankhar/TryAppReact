@@ -4,9 +4,11 @@ video {
     width: 100% !important;
     object-fit: cover !important;
     border-radius: 5px;
+    background: black;
 }
 
 .vcx_player {
     height: 100%;
     width: 100%;
+    border-radius: 5px;
 }
