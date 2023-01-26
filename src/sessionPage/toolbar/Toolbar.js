@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Toolbar = () => {
     const dispatch = useDispatch();
     const mutedVideo = useSelector((state) => state.localStream.localStreamVideoMuted);
+    const mutedAudio = useSelector((state) => state.localStream.localStreamAudioMuted);
 
     const muteVideo = () => {
         if (localStream.myStream.isVideoMuted()) {
@@ -24,6 +25,22 @@ const Toolbar = () => {
             localStream.myStream.muteVideo((res) => {
                 if (res.result === 0) {
                     dispatch(localStreamActions.setVideoMutedLocalStream(true));
+                }
+            })
+        }
+    }
+
+    const muteAudio = () => {
+        if (localStream.myStream.isAudioMuted()) {
+            localStream.myStream.unmuteAudio((res) => {
+                if (res.result === 0) {
+                    dispatch(localStreamActions.setAudioMutedLocalStream(false));
+                }
+            })
+        } else {
+            localStream.myStream.muteAudio((res) => {
+                if (res.result === 0) {
+                    dispatch(localStreamActions.setAudioMutedLocalStream(true));
                 }
             })
         }
@@ -44,6 +61,22 @@ const Toolbar = () => {
                         <a href="#" onClick={muteVideo} >
                             {!mutedVideo && <BsCameraVideo />}
                             {mutedVideo && <BsCameraVideoOff />}
+
+                        </a>
+                    </OverlayTrigger>
+                </ToolbarButtonCover>
+                <ToolbarButtonCover>
+                    <OverlayTrigger
+                        placement='bottom'
+                        overlay={
+                            <Tooltip id={`tooltip-bottom`}>
+                                {mutedAudio ? 'Unmute Audio' : 'Mute Audio'}
+                            </Tooltip>
+                        }
+                    >
+                        <a href="#" onClick={muteAudio} >
+                            {!mutedAudio && <AiOutlineAudio />}
+                            {mutedAudio && <AiOutlineAudioMuted />}
 
                         </a>
                     </OverlayTrigger>

@@ -16,7 +16,7 @@ const Room = (props) => {
                 'name': room.myRoom.me.name,
                 'audio': localStream.myStream.isAudioMuted(),
                 'video': localStream.myStream.isVideoMuted(),
-                'mediatype' : localStream.myStream.isAudioMuted() ? localStream.myStream.isVideoMuted() ? 'none' : 'audio' : localStream.myStream.isVideoMuted() ? 'none' : 'audioVideo',
+                'mediatype' : localStream.myStream.isAudioMuted() ? ( localStream.myStream.isVideoMuted() ? 'none' : 'video') : (localStream.myStream.isVideoMuted() ? 'audio' : 'audioVideo'),
                 'streamId': localStream.myStream.getID(),
                 'clientId': room.myRoom.me.clientId,
                 'local': true
@@ -89,11 +89,12 @@ const Room = (props) => {
                     console.log('active-talker-event ', event);
                     let ATList = event.message.activeList;
                     if (ATList.length === 0) {
+                        console.log('mediaTypre : ', localStream.myStream.isAudioMuted() ? ( localStream.myStream.isVideoMuted() ? 'none' : 'video') : (localStream.myStream.isVideoMuted() ? 'audio' : 'audioVideo'));
                         dispatch(roomActions.setUserList([{
                             'name': room.myRoom.me.name,
                             'audio': localStream.myStream.isAudioMuted(),
                             'video': localStream.myStream.isVideoMuted(),
-                            'mediatype' : localStream.myStream.isAudioMuted() ? localStream.myStream.isVideoMuted() ? 'none' : 'audio' : localStream.myStream.isVideoMuted() ? 'none' : 'audioVideo',
+                            'mediatype' : localStream.myStream.isAudioMuted() ? ( localStream.myStream.isVideoMuted() ? 'none' : 'video') : (localStream.myStream.isVideoMuted() ? 'audio' : 'audioVideo'),
                             'streamId': localStream.myStream.getID(),
                             'clientId': room.myRoom.me.clientId,
                             'local': true
@@ -110,7 +111,7 @@ const Room = (props) => {
 
     return (
         <React.Fragment>
-            <div className="video-wrappers" id="video-containers" style={{ height: '100vh', width: '100vw' }}>
+            <div className="video-wrappers" id="video-containers" style={{ height: `${document.documentElement.clientHeight - 1}px`, width: `${document.documentElement.clientWidth - 1}px` , padding: '10px'}}>
                 <VideoLayout />
                 <Toolbar/>
             </div>
