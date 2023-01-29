@@ -7,15 +7,30 @@ const roomSlice = createSlice({
         setUserList: (state, action) => {
             let screenShared = JSON.parse(JSON.stringify(state.screenShareReceived));
             if (screenShared) {
-                let addingUser = action.payload.userList;
-                let uList = JSON.parse(JSON.stringify(state.userList));
-                console.log('uList ', state.userList);
-                if (!uList.find(o => o.streamId == '101')) {
-                    uList.unshift(addingUser);
+                console.log('uList in roomSlice ', JSON.parse(JSON.stringify(state.userList)));
+                let screenShareObject = {
+                    'name': 'Screen Share',
+                    'audio': true,
+                    'video': true,
+                    'mediatype': 'audioVideo',
+                    'streamId': 101,
+                    'clientId': 'screenshare_101',
                 }
-                state.userList = uList;
+                if (action.payload.add == 'yes') {
+                    let uList = JSON.parse(JSON.stringify(state.userList));
+                    if (!uList.find(o => o.streamId == '101')) {
+                        uList.unshift(screenShareObject);
+                    }
+                    state.userList = uList;
+                } else {
+                    let uList = action.payload.userList;
+                    if (!uList.find(o => o.streamId == '101')) {
+                        uList.unshift(screenShareObject);
+                    }
+                    state.userList = uList;
+                }
             } else {
-                console.log('uList ', JSON.parse(JSON.stringify(state.userList)))
+                console.log('uList in roomSlice ', JSON.parse(JSON.stringify(state.userList)));
                 if (action.payload.screenShare && action.payload.screenShare == 'remove') {
                     let uList = JSON.parse(JSON.stringify(state.userList));
                     uList.shift();

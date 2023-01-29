@@ -9,38 +9,6 @@ import Stack from '@mui/material/Stack';
 import { height } from "@mui/system";
 import layoutSchema from "../../layout/layoutSchema";
 
-function getWidthOfContainer(parentElement, value) {
-    if (parentElement) {
-        let paddingLeft = window.getComputedStyle(parentElement, null).getPropertyValue('padding-left');
-        let paddingLeftValue = Number(paddingLeft.replace('px',''));
-        let paddingRight = window.getComputedStyle(parentElement, null).getPropertyValue('padding-right');
-        let paddingRightValue = Number(paddingRight.replace('px',''));
-
-        let width = parentElement.clientWidth - paddingRightValue - paddingLeftValue;
-        if (value == 'px') {
-            return (`${width}px`);
-        } else {
-            return (width);
-        }
-    }
-}
-
-function getHeightOfContainer(parentElement, value) {
-    if (parentElement) {
-        let paddingTop = window.getComputedStyle(parentElement, null).getPropertyValue('padding-top');
-        let paddingTopValue = Number(paddingTop.replace('px',''));
-        let paddingBottom = window.getComputedStyle(parentElement, null).getPropertyValue('padding-top');
-        let paddingBottomValue = Number(paddingBottom.replace('px',''));
-
-        let height = parentElement.clientHeight - paddingBottomValue - paddingTopValue;
-        if (value == 'px') {
-            return (`${height}px`);
-        } else {
-            return (height);
-        }
-    }
-}
-
 function stringToColor(string) {
     let hash = 0;
     let i;
@@ -73,6 +41,7 @@ function stringAvatar(name) {
 const VideoLayout = (props) => {
     const userList = useSelector((state) => state.roomSlice.userList);
     const localVideoMuted = useSelector((state) => state.localStream.localStreamVideoMuted);
+    const screenShareReceived = useSelector((state) => state.roomSlice.screenShareReceived);
     const [notOnlyMe, setNotOnlyMe] = useState(false);
 
     useEffect(() => {
@@ -81,8 +50,7 @@ const VideoLayout = (props) => {
                 if (userList.length == 1) {
                     if (element.local) {
                         if (!document.querySelector(`#con_${element.clientId} #player_${element.streamId}`)) {
-                            document.querySelector(`#con_${element.clientId}`).style.height =  layoutSchema({ userList: userList, propertyName: 'height' });
-                            document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
                             localStream.myStream.play(`cons_${element.clientId}`, {
                                 player: {
                                     'height': '100%',
@@ -94,15 +62,14 @@ const VideoLayout = (props) => {
                             });
                         }
                         else {
-                            document.querySelector(`#con_${element.clientId}`).style.height =  layoutSchema({ userList: userList, propertyName: 'height' });
-                            document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                            document.querySelector(`#con_${element.clientId}`).removeAttribute("style");
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
                         }
                         setNotOnlyMe(false);
                     } else {
                         setNotOnlyMe(true);
                         if (!document.querySelector(`#con_${element.clientId} #player_${element.streamId}`)) {
-                            document.querySelector(`#con_${element.clientId}`).style.height =  layoutSchema({ userList: userList, propertyName: 'height' });
-                            document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
                             room.myRoom.remoteStreams.get(element.streamId).play(`cons_${element.clientId}`, {
                                 player: {
                                     'height': '100%',
@@ -112,8 +79,8 @@ const VideoLayout = (props) => {
                                 }
                             });
                         } else {
-                            document.querySelector(`#con_${element.clientId}`).style.height =  layoutSchema({ userList: userList, propertyName: 'height' });
-                            document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                            document.querySelector(`#con_${element.clientId}`).removeAttribute("style");
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
                         }
                         if (!document.querySelector(`#con_${room.myRoom.me.clientId} #player_${localStream.myStream.getID()}`) && !document.querySelector(`#self_view #player_${localStream.myStream.getID()}`)) {
                             localStream.myStream.play(`self_view`, {
@@ -129,8 +96,15 @@ const VideoLayout = (props) => {
                 } else {
                     setNotOnlyMe(true);
                     if (!document.querySelector(`#con_${element.clientId} #player_${element.streamId}`)) {
-                        document.querySelector(`#con_${element.clientId}`).style.height = layoutSchema({ userList: userList, propertyName: 'height' });
-                        document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                        if (screenShareReceived) {
+                            if (element.streamId == '101') {
+                                Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'bigChildren'}));
+                            } else {
+                                Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'smallChildren'}));
+                            }
+                        } else {
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
+                        }
                         room.myRoom.remoteStreams.get(element.streamId).play(`cons_${element.clientId}`, {
                             player: {
                                 'height': '100%',
@@ -140,8 +114,16 @@ const VideoLayout = (props) => {
                             }
                         });
                     } else {
-                        document.querySelector(`#con_${element.clientId}`).style.height = layoutSchema({ userList: userList, propertyName: 'height' });
-                        document.querySelector(`#con_${element.clientId}`).style.width = layoutSchema({ userList: userList, propertyName: 'width' });
+                        document.querySelector(`#con_${element.clientId}`).removeAttribute("style");
+                        if (screenShareReceived) {
+                            if (element.streamId == '101') {
+                                Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'bigChildren'}));
+                            } else {
+                                Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'smallChildren'}));
+                            }
+                        } else {
+                            Object.assign(document.querySelector(`#con_${element.clientId}`).style, layoutSchema({ userList: userList, role: 'normalChildren'}));
+                        }
                     }
                     if (!document.querySelector(`#con_${room.myRoom.me.clientId} #player_${localStream.myStream.getID()}`) && !document.querySelector(`#self_view #player_${localStream.myStream.getID()}`)) {
                         localStream.myStream.play(`self_view`, {
@@ -159,21 +141,13 @@ const VideoLayout = (props) => {
 
     }, [userList, notOnlyMe]);
     let divList = userList && userList.map((item) => <div key={'key_' + item.clientId} id={'con_' + item.clientId}><div className={classes['avatar']} id={'avatar_' + item.clientId}>{item.name.length > 0 && (item.mediatype === 'audio' || item.mediatype === 'none') ? <Avatar {...stringAvatar(item.name)} /> : ''}</div><div className={classes['cons-div']} id={'cons_' + item.clientId}></div></div>);
-    var videoContainerStyle = {
-        display: 'grid',
-        gridGap: '10px',
-        gridTemplateColumns: layoutSchema({userList: userList, propertyName: 'col-template-columns'}),
-        gridTemplateRows: layoutSchema({userList: userList, propertyName: 'col-template-rows'}),
-        width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
-        height: getHeightOfContainer(document.querySelector('#video-containers'), 'px'),
-    }
+    var videoContainerStyle = layoutSchema({userList: userList, role: 'wrapper'});
     let selfViewStyle = {};
     if (document.documentElement.clientWidth < 768) {
         selfViewStyle = { position: 'absolute', zIndex: '10', left: '5%', top: '5%', border: '2px solid red', height: '100px', width: '100px' };
     } else {
         selfViewStyle = { position: 'absolute', zIndex: '10', left: '5%', top: '5%', border: '2px solid red', height: '200px', width: '200px' };
     }
-
 
     return (
         <React.Fragment>

@@ -119,12 +119,12 @@ const Room = (props) => {
                                 'streamId': 101,
                                 'clientId': 'screenshare_101',
                             }
-                            dispatch(roomActions.setScreenShareReceived(true));
+                            ATList.unshift(screenShareObject);
                             dispatch(roomActions.setUserList
                                 (
                                     {
-                                        userList: screenShareObject,
-                                        add: 'yes',
+                                        userList: ATList,
+                                        add: 'no',
                                     })
                             );
                         } else {
@@ -185,7 +185,6 @@ const Room = (props) => {
             <div className="video-wrappers" id="video-containers" style={{ height: `${document.documentElement.clientHeight - 1}px`, width: `${document.documentElement.clientWidth - 1}px`, padding: '10px' }}>
                 <VideoLayout />
                 <Toolbar />
-                {userList && userList[0] && userList[0]['name'] && <div>{userList[0]['name']}</div>}
             </div>
         </React.Fragment>
     )
