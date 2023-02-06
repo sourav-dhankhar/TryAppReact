@@ -82,7 +82,6 @@ const layoutSchema = (props) => {
         /* WRAPPER NORMAL STARTS */
         '0DW' : {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr',
             gridTemplateRows: '1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -90,7 +89,6 @@ const layoutSchema = (props) => {
         },
         '1DW': {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr',
             gridTemplateRows: '1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -98,7 +96,6 @@ const layoutSchema = (props) => {
         }, 
         '2DW' : {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -106,7 +103,6 @@ const layoutSchema = (props) => {
         }, 
         '3DW' : {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr 1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -114,7 +110,6 @@ const layoutSchema = (props) => {
         },
         '4DW' : {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr 1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -125,7 +120,6 @@ const layoutSchema = (props) => {
         /* WRAPPER SCREENSHARE STARTS */
         '0DWS' : {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr',
             gridTemplateRows: '1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -133,7 +127,6 @@ const layoutSchema = (props) => {
         },
         '1DWS': {
             display: 'grid',
-            gridGap: '10px',
             gridTemplateColumns: '1fr',
             gridTemplateRows: '1fr',
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
@@ -141,25 +134,22 @@ const layoutSchema = (props) => {
         }, 
         '2DWS' : {
             display: 'grid',
-            gridGap: '10px',
-            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px`: "0px"}`,
-            gridTemplateRows: `${document.querySelector('#video-containers') ? `${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 5 }px ${getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 10}px`: "0px"}`,
+            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px`: "0px"}`,
+            gridTemplateRows: `${document.querySelector('#video-containers') ? `${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') }px ${getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value')}px`: "0px"}`,
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
             height: getHeightOfContainer(document.querySelector('#video-containers'), 'px'),
         }, 
         '3DWS' : {
             display: 'grid',
-            gridGap: '10px',
-            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px`: "0px"}`,
-            gridTemplateRows: `${document.querySelector('#video-containers') ? `repeat(2, ${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 5 }px) ${(getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 2 * 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 10)}px`: "0px"}`,
+            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px`: "0px"}`,
+            gridTemplateRows: `${document.querySelector('#video-containers') ? `repeat(2, ${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') }px) ${(getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 2 * 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value'))}px`: "0px"}`,
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
             height: getHeightOfContainer(document.querySelector('#video-containers'), 'px'),
         },
         '4DWS' : {
             display: 'grid',
-            gridGap: '10px',
-            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 5}px`: "0px"}`,
-            gridTemplateRows: `${document.querySelector('#video-containers') ? `repeat(3, ${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 5 }px) ${(getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 3 * 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 10)}px`: "0px"}`,
+            gridTemplateColumns :  `${document.querySelector('#video-containers') ? `${0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px ${getWidthOfContainer(document.querySelector('#video-containers'), 'value') - 0.8 * getWidthOfContainer(document.querySelector('#video-containers'), 'value')}px`: "0px"}`,
+            gridTemplateRows: `${document.querySelector('#video-containers') ? `repeat(3, ${0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value') }px) ${(getHeightOfContainer(document.querySelector('#video-containers'), 'value') - 3 * 0.2 * getHeightOfContainer(document.querySelector('#video-containers'), 'value'))}px`: "0px"}`,
             width: getWidthOfContainer(document.querySelector('#video-containers'), 'px'),
             height: getHeightOfContainer(document.querySelector('#video-containers'), 'px'),
         },
@@ -169,32 +159,32 @@ const layoutSchema = (props) => {
 
         /* NORMAL CHILDREN DESKTOP STARTS */
         '0DNC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 10}px` : "0px"
         },
         '1DNC': {
             'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
             'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
         },
         '2DNC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth / props.userList.length - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth / props.userList.length - 10}px` : "0px",
         },
         '3DNC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) - 10)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) - 10)}px` : "0px",
         },
         '4DNC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) -10)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) -10)}px` : "0px",
         },
 
         /* NORMAL CHILDREN DESKTOP ENDS */
 
         /* NORMAL CHILDREN MOBILE STARTS */
         '0MNC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px"
         },
         '1MNC': {
             'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
@@ -202,15 +192,15 @@ const layoutSchema = (props) => {
         },
         '2MNC': {
             'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight / props.userList.length - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px",
         },
         '3MNC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) - 5)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) - 5)}px` : "0px",
         },
         '4MNC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) - 5)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) - 5)}px` : "0px",
         },
 
         /* NORMAL CHILDREN MOBILE ENDS */
@@ -218,50 +208,50 @@ const layoutSchema = (props) => {
 
         /* BIG CHILDREN DESKTOP STARTS */
         '0DBC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 10}px` : "0px"
         },
         '1DBC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 10}px` : "0px"
         },
         '2DBC': {
             gridRow : `1 / span ${props.userList.length}`,
-            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 5}px` : "0px",
-            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
+            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 10}px` : "0px",
+            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
         },
         '3DBC': {
             gridRow : `1 / span ${props.userList.length}`,
-            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 5}px` : "0px",
-            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
+            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 10}px` : "0px",
+            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
         },
         '4DBC': {
             gridRow : `1 / span ${props.userList.length}`,
-            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 5}px` : "0px",
-            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
+            width :  document.querySelector('#videosWrapper') ? `${getWidthOfLargeGridColumn(document.querySelector('#videosWrapper'), 'value') - 10}px` : "0px",
+            height: document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 10}px` : "0px",
         },
 
         /* BIG CHILDREN DESKTOP ENDS */
         /* BIG CHILDREN MOBILE STARTS */
         '0MBC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px"
         },
         '1MBC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px"
         },
         '2MBC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
             'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth / props.userList.length - 5}px` : "0px",
         },
         '3MBC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) - 5)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) - 5)}px` : "0px",
         },
         '4MBC': {
-            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1) - 5)}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1) - 5)}px` : "0px",
         },
 
         /* BIG CHILDREN MOBILE ENDS */
@@ -269,12 +259,12 @@ const layoutSchema = (props) => {
 
         /* SMALL CHILDREN DESKTOP STARTS */
         '0DSC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px"
         },
         '1DSC': {
-            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight}px` : "0px",
-            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
+            'height': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientHeight - 5}px` : "0px",
+            'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth - 5}px` : "0px"
         },
         '2DSC': {
             gridColumn: '2',
@@ -295,7 +285,7 @@ const layoutSchema = (props) => {
         /* SMALL CHILDREN DESKTOP ENDS */
 
         '1SP': {
-            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth -5 }px ${0.2 * document.querySelector('#videosWrapper').clientWidth -5}px`: "0px"}`,
+            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth }px ${0.2 * document.querySelector('#videosWrapper').clientWidth}px`: "0px"}`,
             'col-template-rows': '1fr',
             // 'col-template-columns': '1fr',
             // 'col-template-rows': '1fr',
@@ -303,16 +293,16 @@ const layoutSchema = (props) => {
             // 'width': document.querySelector('#videosWrapper') ? `${document.querySelector('#videosWrapper').clientWidth}px` : "0px"
         },
         '2SP': {
-            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth -5 }px ${0.2 * document.querySelector('#videosWrapper').clientWidth -5}px`: "0px"}`,
-            'col-template-rows': `${document.querySelector('#videosWrapper') ? `${0.2 * document.querySelector('#videosWrapper').clientHeight -5 }px ${0.8 * document.querySelector('#videosWrapper').clientHeight -5}px`: "0px"}`,
+            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth }px ${0.2 * document.querySelector('#videosWrapper').clientWidth}px`: "0px"}`,
+            'col-template-rows': `${document.querySelector('#videosWrapper') ? `${0.2 * document.querySelector('#videosWrapper').clientHeight }px ${0.8 * document.querySelector('#videosWrapper').clientHeight}px`: "0px"}`,
         },
         '3S': {
-            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth -5 }px ${0.2 * document.querySelector('#videosWrapper').clientWidth -5}px`: "0px"}`,
+            'col-template-columns' :  `${document.querySelector('#videosWrapper') ? `${0.8 * document.querySelector('#videosWrapper').clientWidth }px ${0.2 * document.querySelector('#videosWrapper').clientWidth}px`: "0px"}`,
             'col-template-rows': '1fr',
             // 'col-template-columns': '1fr 1fr',
             // 'col-template-rows': '1fr 1fr',
-            // 'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1)) - 5}px` : "0px",
-            // 'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1)) - 5}px` : "0px",
+            // 'height': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientHeight / (props.userList.length - 1))}px` : "0px",
+            // 'width': document.querySelector('#videosWrapper') ? `${(document.querySelector('#videosWrapper').clientWidth / (props.userList.length - 1))}px` : "0px",
         },
     }
 
